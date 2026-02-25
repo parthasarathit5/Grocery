@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <h3 class="mb-3">Customer Details</h3>
+
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="name" class="form-control mb-3" placeholder="Full Name" required>
+            <input type="text" name="phone" class="form-control mb-3" placeholder="Phone Number" required>
+            <textarea name="address" class="form-control mb-3" placeholder="Delivery Address" required></textarea>
+
+            <h4>Total: ₹{{ total }}</h4>
+
+            <button class="btn btn-success mt-3">Place Order</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

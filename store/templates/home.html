@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Talapala's Groceries</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-dark bg-success">
+    <div class="container">
+        <span class="navbar-brand">Talapala's Groceries 🛒</span>
+        <a href="/checkout/" class="btn btn-warning">Checkout</a>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-3">
+            <div class="card shadow-sm mb-4">
+
+                <!-- Image -->
+                <img src="{% static product.image %}" 
+                     loading="lazy"
+                     class="card-img-top"
+                     style="height:200px; object-fit:cover;">
+
+                <div class="card-body text-center">
+                    <h5>{{ product.name }}</h5>
+                    <p class="text-primary fw-bold">₹{{ product.price }}</p>
+
+                    <div class="d-flex justify-content-center gap-2">
+                        <a href="/remove/{{ product.id }}/" class="btn btn-danger btn-sm">-</a>
+                        <span class="fw-bold">{{ product.quantity }}</span>
+                        <a href="/add/{{ product.id }}/" class="btn btn-success btn-sm">+</a>
+                    </div>
+
+                    <p class="mt-2 text-muted">
+                        Subtotal: ₹{{ product.subtotal }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="card p-3 shadow-lg">
+        <h4 class="text-end">Total: ₹{{ total }}</h4>
+    </div>
+</div>
+
+</body>
+</html>

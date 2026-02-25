@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Cart</title>
+</head>
+<body>
+
+<h2>Your Cart 🛍</h2>
+
+{% if items %}
+    {% for item in items %}
+        <p>
+            {{ item.product.name }} 
+            × {{ item.quantity }} 
+            = ₹{{ item.subtotal }}
+        </p>
+    {% endfor %}
+
+    <h3>Total: ₹{{ total }}</h3>
+
+    <a href="/checkout/">Proceed to Checkout</a>
+
+{% else %}
+    <p>Cart is empty.</p>
+{% endif %}
+
+<br><br>
+<a href="/">Back to Home</a>
+
+</body>
+</html>
