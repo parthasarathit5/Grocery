@@ -4,4 +4,4 @@ db.sqlite3
 media/
 staticfiles/
 .env
-.vscode/
+.vscode/git

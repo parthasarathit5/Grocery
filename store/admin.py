@@ -2,40 +2,24 @@ from django.contrib import admin
 from .models import Product, Order
 
 
-# =========================
-# Customize Admin Header
-# =========================
-admin.site.site_header = "Partha Grocery Administration"
-admin.site.site_title = "Partha Grocery Admin Portal"
-admin.site.index_title = "Welcome to Partha Grocery Control Panel"
-
-
-# =========================
-# Product Admin Customization
-# =========================
+# Product Admin
 class ProductAdmin(admin.ModelAdmin):
-    # Columns to show in admin list
     list_display = ('id', 'name', 'price', 'stock')
-
-    # Add search box
     search_fields = ('name',)
 
-    # Add filters
-    list_filter = ('price', 'stock')
 
-    # Items per page
-    list_per_page = 10
-
-
-# =========================
-# Order Admin Customization
-# =========================
+# Order Admin (FIXED)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('id', 'customer_name', 'product', 'quantity')
-    search_fields = ('customer_name',)
-    list_per_page = 10
+    list_display = ('id', 'name', 'phone', 'total', 'created_at')
+    search_fields = ('name', 'phone')
 
 
-# Register models with customization
+# Register models
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Order, OrderAdmin)
+
+
+# Admin page customization
+admin.site.site_header = "Partha Grocery Administration"
+admin.site.site_title = "Partha Grocery Admin"
+admin.site.index_title = "Welcome to Partha Grocery Control Panel"
